@@ -1,0 +1,13 @@
+.table-container{
+    background-color: red;
+    font-size: 100%;
+}
+
+.table-container table thead tr{
+    background-color: aqua;
+    
+}
+
+.table-bg{
+    background: aqua;
+}
