@@ -4,56 +4,32 @@ require('dotenv').config();
 
 const app = express();
 const port = 5000;
-const apiKey = "6228ec7d-54e7-43a1-8428-5435a50df28f";
+const apiKey = "8c8421ff-15ca-416d-b4a9-61b9ded7b5e4";
 
 // CORS middleware
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    next();
-  });
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
 
-// // Endpoint to fetch cryptocurrency map
-// app.get('/api/cryptocurrency/map', async (req, res) => {
-//     const url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map';
-  
-//     try {
-//       const response = await fetch(url, {
-//         headers: {
-//           'X-CMC_PRO_API_KEY': apiKey,
-//           'Content-Type': 'application/json',
-//           'Accept': 'application/json',
-//         },
-//       });
-  
-//       if (!response.ok) {
-//         throw new Error('Network response was not ok');
-//       }
-  
-//       const data = await response.json();
-//       res.json(data); // Send JSON response containing the fetched data
-  
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//       res.status(500).json({ error: 'Failed to fetch data' });
-//     }
-//   });
-  
-//  
 
+var coinData;
+var coinId;
+var coin = [];
 /* Example in Node.js */
 const axios = require('axios');
 
 let response = null;
 new Promise(async (resolve, reject) => {
   try {
-    response = await axios.get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/info?id=1', {
+    response = await axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
       headers: {
-        'X-CMC_PRO_API_KEY': '6228ec7d-54e7-43a1-8428-5435a50df28f',
+        'X-CMC_PRO_API_KEY': '8c8421ff-15ca-416d-b4a9-61b9ded7b5e4',
       },
     });
-  } catch(ex) {
+  } catch (ex) {
     response = null;
     // error
     console.log(ex);
@@ -64,13 +40,58 @@ new Promise(async (resolve, reject) => {
     const json = response.data;
     // console.log(json);
     resolve(json);
-    
-    app.get("/api/data",(req,res)=>{
-        res.send(json);
+
+
+    // coinData = json["data"];
+    // coinId = coinData.map(object => object.id)
+    // // console.log(coinId);
+    // coinId.forEach(element => {
+    //   coin.push(element);
+    // });
+
+    app.get("/api/data", (req, res) => {
+      res.send(json);
     })
   }
+
 });
 
-app.listen(port, () => {
-        console.log(`Server is running on http://localhost:${port}`);
+
+
+
+setTimeout(() => {
+  console.log(coin);
+}, 3000);
+// 
+
+let response1 = null;
+  new Promise(async (resolve, reject) => {
+    try {
+      response1 = await axios.get(`https://pro-api.coinmarketcap.com/v1/exchange/assets?id=270`, {
+        headers: {
+          'X-CMC_PRO_API_KEY': '8c8421ff-15ca-416d-b4a9-61b9ded7b5e4',
+        },
       });
+    } catch (ex) {
+      response1 = null;
+      // error
+      console.log(ex);
+      reject(ex);
+    }
+    if (response1) {
+      // success
+      const json1 = response1.data;
+      // console.log(json);
+      resolve(json1);
+      app.get("/api/exchange", (req, res) => {
+        res.send(json1);
+      });
+      
+    }
+  })
+
+
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

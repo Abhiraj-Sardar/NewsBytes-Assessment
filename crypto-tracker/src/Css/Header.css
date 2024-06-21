@@ -1,0 +1,12 @@
+.header{
+    /* background-color: rgb(76, 72, 72); */
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.header .converter{
+    background-color: rgba(58, 57, 57, 0.644);
+    height:400px;
+    border-radius: 10px;
+}
+

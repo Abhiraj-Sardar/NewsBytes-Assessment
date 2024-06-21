@@ -1,13 +1,14 @@
 .table-container{
-    background-color: red;
+    /* background-color: red; */
     font-size: 100%;
 }
 
-.table-container table thead tr{
+.table-container table{
     background-color: aqua;
-    
+    width:95%;
 }
 
-.table-bg{
-    background: aqua;
+.table-container table tbody tr td{
+    text-align: center;
+    align-content: center;
 }

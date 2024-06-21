@@ -1,0 +1,11 @@
+.navbar{
+    height:45px;
+    display: block;
+    text-align: center;
+    background-color: rgb(104, 99, 99);
+    font-size: 24px;
+    font-weight: 900;
+    color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
