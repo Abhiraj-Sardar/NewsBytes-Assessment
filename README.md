@@ -14,3 +14,9 @@ This Page Contains overall information and special features that a user will alw
 This Feature allow the user to convert one crypto currency to another crypto currency to know its equivalent crypto value.
 
 ![](https://github.com/Abhiraj-Sardar/NewsBytes-Assessment/blob/master/Output/converter.png)
+
+
+## 3. latest Trend Info
+This page updates the user knowledge by let them know which crypto Coins are Trending in The market.
+
+![](https://github.com/Abhiraj-Sardar/NewsBytes-Assessment/blob/master/Output/trend.png)
