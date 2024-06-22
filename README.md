@@ -10,3 +10,7 @@ This Page Contains overall information and special features that a user will alw
 ![](https://github.com/Abhiraj-Sardar/NewsBytes-Assessment/blob/master/Output/page2.png)
 
 ## 2. Crypto Converter
+
+This Feature allow the user to convert one crypto currency to another crypto currency to know its equivalent crypto value.
+
+![](https://github.com/Abhiraj-Sardar/NewsBytes-Assessment/blob/master/Output/converter.png)
