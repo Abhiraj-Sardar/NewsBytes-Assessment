@@ -42,13 +42,6 @@ new Promise(async (resolve, reject) => {
     resolve(json);
 
 
-    // coinData = json["data"];
-    // coinId = coinData.map(object => object.id)
-    // // console.log(coinId);
-    // coinId.forEach(element => {
-    //   coin.push(element);
-    // });
-
     app.get("/api/data", (req, res) => {
       res.send(json);
     })
@@ -64,31 +57,7 @@ setTimeout(() => {
 }, 3000);
 // 
 
-let response1 = null;
-  new Promise(async (resolve, reject) => {
-    try {
-      response1 = await axios.get(`https://pro-api.coinmarketcap.com/v1/exchange/assets?id=270`, {
-        headers: {
-          'X-CMC_PRO_API_KEY': '8c8421ff-15ca-416d-b4a9-61b9ded7b5e4',
-        },
-      });
-    } catch (ex) {
-      response1 = null;
-      // error
-      console.log(ex);
-      reject(ex);
-    }
-    if (response1) {
-      // success
-      const json1 = response1.data;
-      // console.log(json);
-      resolve(json1);
-      app.get("/api/exchange", (req, res) => {
-        res.send(json1);
-      });
-      
-    }
-  })
+
 
 
 
